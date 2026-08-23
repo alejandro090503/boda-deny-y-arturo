@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
-<title>Deny &amp; Arturo &middot; 30 de enero de 2027</title>
+<title>Arturo &amp; Deny &middot; 30 de enero de 2027</title>
 <meta name="description" content="Nos casamos y queremos que estés ahí. Una celebración en Tulancingo de Bravo, Hidalgo — Sábado 30 de Enero 2027 · Abre tu invitación">
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://boda-deny-y-arturo.vercel.app/">
-<meta property="og:title"       content="💌 Deny &amp; Arturo · 30 de enero de 2027">
+<meta property="og:title"       content="💌 Arturo &amp; Deny · 30 de enero de 2027">
 <meta property="og:description" content="Nos casamos y queremos que estés ahí. Una celebración en Tulancingo de Bravo, Hidalgo — Sábado 30 de Enero 2027 · Abre tu invitación ✉️">
 <meta property="og:image"       content="https://boda-deny-y-arturo.vercel.app/og-image.jpg?v=1">
 <meta property="og:image:secure_url" content="https://boda-deny-y-arturo.vercel.app/og-image.jpg?v=1">
 <meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt"   content="Invitación de boda de Deny &amp; Arturo — 30 de enero de 2027">
+<meta property="og:image:alt"   content="Invitación de boda de Arturo &amp; Deny — 30 de enero de 2027">
 <meta property="og:locale"      content="es_MX">
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="💌 Deny &amp; Arturo · 30 de enero de 2027">
+<meta name="twitter:title"       content="💌 Arturo &amp; Deny · 30 de enero de 2027">
 <meta name="twitter:description" content="Nos casamos y queremos que estés ahí. Una celebración en Tulancingo de Bravo, Hidalgo — Sábado 30 de Enero 2027 ✉️">
 <meta name="twitter:image"       content="https://boda-deny-y-arturo.vercel.app/og-image.jpg?v=1">
 <script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
@@ -497,30 +497,10 @@ body{
 /* ── GALERÍA ── */
 #galeria{padding:72px 28px;background:var(--bg);text-align:center}
 .historia-txt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:500;line-height:1.8;color:var(--dark);max-width:340px;margin:18px auto 36px;}
-.gal-wrap{position:relative;margin-top:32px}
-.gal-carousel{position:relative;overflow:hidden;border-radius:28px;aspect-ratio:4/5;box-shadow:0 16px 56px rgba(77,11,11,.22);cursor:grab;user-select:none;}
-.gal-carousel:active{cursor:grabbing}
-.gal-slide{position:absolute;inset:0;opacity:0;transition:opacity .85s cubic-bezier(.4,0,.2,1);pointer-events:none;background:var(--surface);}
-.gal-slide.active{opacity:1;pointer-events:auto}
 /* fondo difuminado con la misma foto — rellena bandas de forma estética */
-.gal-slide::before{content:'';position:absolute;inset:0;background-image:var(--bg-img);background-size:cover;background-position:center;filter:blur(26px) brightness(.7) saturate(1.05);transform:scale(1.18);z-index:0;}
-.gal-slide img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:center;display:block;pointer-events:none;}
 /* horizontales y cuadrada (1,2,4,5): foto nítida completa sobre el fondo difuminado */
 
 /* foto2,4,5,6 recortadas ~4:5 y verticales (3,7,8): llenan el marco */
-.gal-slide:nth-child(1){--bg-img:url('foto1.jpg')}
-.gal-slide:nth-child(2){--bg-img:url('foto2.jpg')}
-.gal-slide:nth-child(3){--bg-img:url('foto3.jpg')}
-.gal-slide:nth-child(4){--bg-img:url('foto4.jpg')}
-.gal-slide:nth-child(5){--bg-img:url('foto5.jpg')}
-.gal-vignette{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(1,1,3,.28) 0%,transparent 55%);pointer-events:none;}
-.gal-btn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.72);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);z-index:10;transition:background .2s,transform .2s;-webkit-backdrop-filter:blur(6px);}
-.gal-btn:hover{background:rgba(255,255,255,.95);transform:translateY(-50%) scale(1.08)}
-.gal-btn svg{width:18px;height:18px;stroke:var(--dark);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.gal-prev{left:14px}.gal-next{right:14px}
-.gal-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:20px;}
-.gal-dot{width:7px;height:7px;border-radius:4px;background:var(--accent);opacity:.28;transition:all .4s cubic-bezier(.4,0,.2,1);cursor:pointer;border:none;padding:0;}
-.gal-dot.active{opacity:1;width:22px}
 
 
 /* ── BRILLO FLUSH (#4d0b0b) ── */
@@ -555,6 +535,65 @@ body{
 }
 
 
+
+
+/* ══ AMBIENTACIÓN VICTORIANA · assets de fondo ══ */
+/* papel antiguo bajo toda la invitación */
+.wrap{position:relative;z-index:1}
+.wrap::after{
+  content:"";position:fixed;inset:0;z-index:2;pointer-events:none;
+  background:url('tex-papel.jpg') center/cover no-repeat;
+  opacity:.26;mix-blend-mode:multiply;
+}
+
+/* damasco victoriano en las secciones "surface" */
+#countdown::before,#dresscode::before,#ubicacion::before,#album::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('tex-damasco.png') center/300px repeat;
+  opacity:.11;mix-blend-mode:multiply;
+  mask-image:linear-gradient(to right,transparent 0%,black 16%,black 84%,transparent 100%),
+             linear-gradient(to bottom,transparent 0%,black 14%,black 86%,transparent 100%);
+  mask-composite:intersect;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 16%,black 84%,transparent 100%),
+                     linear-gradient(to bottom,transparent 0%,black 14%,black 86%,transparent 100%);
+  -webkit-mask-composite:destination-in;
+}
+#countdown,#dresscode,#ubicacion,#album,#familia,#itinerario,#rsvp,#regalos,#quote{position:relative}
+#countdown > *,#dresscode > *,#ubicacion > *,#album > *{position:relative;z-index:1}
+
+/* filigrana de esquina en las secciones de tarjeta */
+#familia::before,#familia::after,#rsvp::before,#rsvp::after{
+  content:"";position:absolute;width:104px;height:104px;z-index:0;pointer-events:none;
+  background:url('orn-esquina.png') center/contain no-repeat;opacity:.42;
+}
+#familia::before,#rsvp::before{top:10px;left:8px}
+#familia::after,#rsvp::after{top:10px;right:8px;transform:scaleX(-1)}
+@media (max-width:400px){
+  #familia::before,#familia::after,#rsvp::before,#rsvp::after{width:74px;height:74px;opacity:.34}
+}
+
+/* divisor ornamental victoriano — sustituye al SVG de los ornamentos */
+.ornament svg{display:none}
+.ornament{
+  background-image:url('orn-divisor.png');
+  background-repeat:no-repeat;background-position:center;background-size:260px auto;
+  min-height:58px;
+}
+.ornament--s2b{background-color:transparent}
+
+/* marco de camafeo alrededor del hospedaje */
+.hosp-photo{position:relative}
+.hosp-cameo{position:relative;display:inline-block;margin-bottom:20px}
+.hosp-cameo .hosp-photo{margin-bottom:0}
+.hosp-cameo::after{
+  content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:320px;height:368px;background:url('orn-marco.png') center/contain no-repeat;
+  pointer-events:none;z-index:2;
+}
+@media (max-width:400px){
+  .hosp-cameo::after{width:288px;height:331px}
+  .hosp-photo{width:176px;height:176px}
+}
 
 /* ── AJUSTES TIPOGRÁFICOS VICTORIANOS ── */
 .eyebrow{font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;font-style:italic;}
@@ -687,7 +726,7 @@ body{
   width:clamp(112px,25vw,180px);height:clamp(149px,33vw,240px);
   margin-left:calc(clamp(112px,25vw,180px) / -2);
   margin-top:calc(clamp(149px,33vw,240px) / -2);
-  --angle:calc((360deg / 5) * var(--i));
+  --angle:calc((360deg / 6) * var(--i));
   transform:rotate(var(--angle)) translateY(calc(-1 * min(240px,32vw)));
   transform-origin:center center;
 }
@@ -703,42 +742,6 @@ body{
   .wheel-item{transform:rotate(var(--angle)) translateY(calc(-1 * min(224px,34vw)))}
 }
 
-/* ── GALERÍA · PORTAL GÓTICO (retirado) ── */
-.gal-arch{position:relative;max-width:340px;margin:0 auto;}
-.gal-arch::after{
-  content:'';position:absolute;inset:-9px;pointer-events:none;z-index:12;
-  border:1px solid rgba(122,96,24,.75);
-  -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 125' preserveAspectRatio='none'><path d='M50 0 C78 0 100 26 100 52 L100 125 L0 125 L0 52 C0 26 22 0 50 0 Z' fill='black'/></svg>");
-  mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 125' preserveAspectRatio='none'><path d='M50 0 C78 0 100 26 100 52 L100 125 L0 125 L0 52 C0 26 22 0 50 0 Z' fill='black'/></svg>");
-  -webkit-mask-composite:xor;mask-composite:exclude;
-  -webkit-mask-size:100% 100%;mask-size:100% 100%;
-  box-shadow:0 0 0 1px rgba(77,11,11,.18);
-}
-.gal-carousel{
-  border-radius:0 !important;
-  -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 125' preserveAspectRatio='none'><path d='M50 0 C78 0 100 26 100 52 L100 125 L0 125 L0 52 C0 26 22 0 50 0 Z' fill='black'/></svg>");
-  mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 125' preserveAspectRatio='none'><path d='M50 0 C78 0 100 26 100 52 L100 125 L0 125 L0 52 C0 26 22 0 50 0 Z' fill='black'/></svg>");
-  -webkit-mask-size:100% 100%;mask-size:100% 100%;
-  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-}
-/* transición "velo": la foto activa se descubre de arriba hacia abajo + ken burns lento */
-.gal-slide{
-  transition:opacity 1s cubic-bezier(.4,0,.2,1), clip-path 1.05s cubic-bezier(.33,.9,.28,1) !important;
-  clip-path:inset(0 0 100% 0);
-}
-.gal-slide.active{clip-path:inset(0 0 0 0)}
-.gal-slide img{animation:none}
-.gal-slide.active img{animation:galKen 9s ease-out forwards}
-@keyframes galKen{from{transform:scale(1.001)}to{transform:scale(1.075)}}
-.gal-cruz{display:block;margin:0 auto 18px}
-.gal-btn{background:rgba(242,240,215,.82)}
-.gal-btn:hover{background:rgba(242,240,215,.98)}
-.gal-dot{border-radius:0;transform:rotate(45deg);width:7px;height:7px}
-.gal-dot.active{width:9px;height:9px}
-@media (prefers-reduced-motion:reduce){
-  .gal-slide{clip-path:none}
-  .gal-slide.active img{animation:none}
-}
 
 
 /* ── REGALO INTERACTIVO ── */
@@ -876,7 +879,7 @@ body{
 
 <!-- ═══════════════════════════════════════════ ENVELOPE OPENING -->
 <div id="envelope-screen">
-  <img id="envImage" src="sobre.jpg" alt="Invitación de boda de Deny y Arturo">
+  <img id="envImage" src="sobre.jpg" alt="Invitación de boda de Arturo y Deny">
   <video id="envVideo" src="apertura.mp4" muted playsinline preload="auto" poster="sobre.jpg"></video>
   <div class="env-tap" id="envTap">Toca para abrir</div>
 </div>
@@ -889,9 +892,9 @@ body{
     <div class="hero-bg"></div>
     <div class="hero-veil"></div>
     <div class="hero-content">
-      <span class="hero-bride rv">Deny</span>
+      <span class="hero-bride rv">Arturo</span>
       <span class="hero-amp rv">&amp;</span>
-      <span class="hero-groom rv">Arturo</span>
+      <span class="hero-groom rv">Deny</span>
     </div>
     <div class="scroll-hint" id="scrollHint">
       <span class="scroll-hint-txt">Desliza</span>
@@ -986,7 +989,7 @@ body{
     <p class="quote-txt rv">
       &ldquo;Hay amores que pertenecen a un instante, y otros que parecen haber esperado toda una eternidad para encontrarse. El nuestro nació con la certeza de reconocernos, como si el tiempo solo hubiera sido el camino para volver el uno al otro. Y si la vida nos concede una eternidad, que sea siempre así: juntos.&rdquo;
     </p>
-    <span class="quote-sig rv">Deny &amp; Arturo</span>
+    <span class="quote-sig rv">Arturo &amp; Deny</span>
   </section>
 
   <!-- ── 5. FAMILIA ── -->
@@ -1133,7 +1136,7 @@ body{
 
     <p class="hosp-eyebrow rv">Para tu estancia</p>
     <div class="hosp-block rv">
-      <div class="hosp-photo"><img src="hotel-colonial.jpg" alt="Hotel Colonial, Tulancingo de Bravo" loading="lazy"></div>
+      <div class="hosp-cameo"><div class="hosp-photo"><img src="hotel-colonial.jpg" alt="Hotel Colonial, Tulancingo de Bravo" loading="lazy"></div></div>
       <div class="hosp-name">Hotel Colonial</div>
       <div class="hosp-city">Tulancingo de Bravo, Hgo.</div>
       <div class="hosp-btns">
@@ -1321,11 +1324,12 @@ body{
       <div class="wheel" id="wheel">
         <span class="wheel-spoke" aria-hidden="true"></span>
         <span class="wheel-spoke wheel-spoke--inner" aria-hidden="true"></span>
-        <div class="wheel-item" style="--i:0"><div class="wheel-item-inner"><img src="foto1.jpg" alt="Deny &amp; Arturo" loading="eager"></div></div>
-        <div class="wheel-item" style="--i:1"><div class="wheel-item-inner"><img src="foto2.jpg" alt="Deny &amp; Arturo" loading="eager"></div></div>
-        <div class="wheel-item" style="--i:2"><div class="wheel-item-inner"><img src="foto3.jpg" alt="Deny &amp; Arturo" loading="eager"></div></div>
-        <div class="wheel-item" style="--i:3"><div class="wheel-item-inner"><img src="foto4.jpg" alt="Deny &amp; Arturo" loading="eager"></div></div>
-        <div class="wheel-item" style="--i:4"><div class="wheel-item-inner"><img src="foto5.jpg" alt="Deny &amp; Arturo" loading="eager"></div></div>
+        <div class="wheel-item" style="--i:0"><div class="wheel-item-inner"><img src="foto6.jpg" alt="Arturo &amp; Deny" loading="eager"></div></div>
+        <div class="wheel-item" style="--i:1"><div class="wheel-item-inner"><img src="foto1.jpg" alt="Arturo &amp; Deny" loading="eager"></div></div>
+        <div class="wheel-item" style="--i:2"><div class="wheel-item-inner"><img src="foto2.jpg" alt="Arturo &amp; Deny" loading="eager"></div></div>
+        <div class="wheel-item" style="--i:3"><div class="wheel-item-inner"><img src="foto3.jpg" alt="Arturo &amp; Deny" loading="eager"></div></div>
+        <div class="wheel-item" style="--i:4"><div class="wheel-item-inner"><img src="foto4.jpg" alt="Arturo &amp; Deny" loading="eager"></div></div>
+        <div class="wheel-item" style="--i:5"><div class="wheel-item-inner"><img src="foto5.jpg" alt="Arturo &amp; Deny" loading="eager"></div></div>
       </div>
       <div class="wheel-hub" aria-hidden="true"><span class="wheel-hub-txt">A&amp;D</span></div>
     </div>
@@ -1367,10 +1371,10 @@ body{
     </div>
     <p class="eyebrow rv">Comparte el Momento</p>
     <h2 class="script-title rv">Álbum Compartido</h2>
-    <p class="album-note rv">¡Queremos ver la boda a través de tus ojos! Escanea el código y sube tus fotos al álbum de Deny &amp; Arturo.</p>
+    <p class="album-note rv">¡Queremos ver la boda a través de tus ojos! Escanea el código y sube tus fotos al álbum de Arturo &amp; Deny.</p>
     <!-- PENDIENTE: link del álbum compartido -->
     <div class="album-qr-wrap rv">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=360x360&color=4d0b0b&bgcolor=f2f0d7&margin=18&data=https%3A%2F%2Fboda-deny-y-arturo.vercel.app%2F" alt="QR Álbum de fotos Deny y Arturo">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=360x360&color=4d0b0b&bgcolor=f2f0d7&margin=18&data=https%3A%2F%2Fboda-deny-y-arturo.vercel.app%2F" alt="QR Álbum de fotos Arturo y Deny">
       <span class="qr-label">Escanea para subir tus fotos</span>
     </div>
   </section>
@@ -1501,7 +1505,7 @@ body{
   <section id="mensaje">
     <p class="eyebrow rv">Con Cariño</p>
     <h2 class="script-title rv">Un Mensaje para los Novios</h2>
-    <p class="msg-note rv">Tus palabras son un regalo para el corazón. Déjales una felicitación, un consejo o un deseo que Deny &amp; Arturo atesorarán por siempre en este nuevo comienzo.</p>
+    <p class="msg-note rv">Tus palabras son un regalo para el corazón. Déjales una felicitación, un consejo o un deseo que Arturo &amp; Deny atesorarán por siempre en este nuevo comienzo.</p>
     <div class="msg-card rv">
       <textarea id="msgNovios" class="msg-textarea" placeholder="Escribe aquí tu mensaje para los novios…"></textarea>
       <button class="btn-wa" type="button" onclick="sendMensaje()">
@@ -1513,7 +1517,7 @@ body{
 
   <!-- ── 14. FOOTER ── -->
   <footer id="footer">
-    <div class="footer-names rv">Deny &amp; Arturo</div>
+    <div class="footer-names rv">Arturo &amp; Deny</div>
     <div class="footer-date rv">30 de enero de 2027</div>
     <div class="footer-hr"></div>
     <a href="https://www.instagram.com/elysium.invitaciones" target="_blank" rel="noopener" class="footer-credit">@elysium.invitaciones</a>
@@ -2003,7 +2007,7 @@ function sendMensaje(){
   const field=document.getElementById('msgNovios');
   const msg=(field && field.value ? field.value.trim() : '');
   if(!msg){ if(field){ field.focus(); } return; }
-  const text='💌 Un mensaje para Deny & Arturo:\n\n«'+msg+'»';
+  const text='💌 Un mensaje para Arturo & Deny:\n\n«'+msg+'»';
   window.open('https://api.whatsapp.com/send?text='+encodeURIComponent(text),'_blank');
 }
 
