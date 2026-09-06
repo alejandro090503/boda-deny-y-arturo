@@ -297,11 +297,7 @@ body{
 .family-amp{display:block;font-family:'Pinyon Script',cursive;font-style:normal;font-size:26px;line-height:1;color:var(--accent);opacity:.75;margin:4px 0;}
 .family-names{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;font-weight:600;line-height:1.6;color:var(--text);}
 .cross-mark{display:inline-block;width:8px;height:12px;vertical-align:middle;margin-left:5px;margin-bottom:2px;fill:var(--accent);opacity:.85;}
-.padrinos-eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);text-align:center;margin:8px 0 20px;}
 .family-section-sep{width:48px;height:1px;background:var(--accent);opacity:.25;margin:32px auto 28px;}
-.padrinos-ticker{position:relative;min-height:80px;max-width:360px;margin:0 auto;display:flex;align-items:center;justify-content:center;}
-.padrinos-tick-name{position:absolute;width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;font-weight:600;line-height:1.4;color:var(--text);opacity:0;}
-.padrinos-tick-count{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);opacity:.5;margin-top:12px;text-align:center;}
 
 /* ── CORTEJO ── */
 #cortejo{padding:72px 28px;text-align:center;background:var(--bg)}
@@ -375,7 +371,7 @@ body{
 
 /* ── HOSPEDAJE · FOTO CIRCULAR ── */
 .hosp-block{max-width:340px;margin:34px auto 0;display:flex;flex-direction:column;align-items:center;text-align:center}
-.hosp-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;border:3px solid rgba(122,96,24,.45);box-shadow:0 12px 34px rgba(77,11,11,.24);margin-bottom:20px}
+.hosp-photo{width:194px;height:194px;border-radius:50%;overflow:hidden;border:3px solid rgba(122,96,24,.45);box-shadow:0 12px 34px rgba(77,11,11,.24);margin-bottom:20px}
 .hosp-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .hosp-name{font-family:'Cinzel',serif;font-weight:600;font-size:21px;letter-spacing:1px;color:var(--dark);margin-bottom:6px}
 .hosp-city{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.85;margin-bottom:16px}
@@ -489,9 +485,6 @@ body{
 @keyframes dcGlow{0%,100%{opacity:.22;transform:translateX(-50%) scale(.9)}50%{opacity:.95;transform:translateX(-50%) scale(1.08)}}
 @media (prefers-reduced-motion:reduce){.dc-fig::before{animation:none;opacity:.4}}
 .dc-fig img{height:200px;width:auto;display:block;position:relative;z-index:1;filter:drop-shadow(0 6px 14px rgba(77,11,11,.24));}
-.dc-fig-label,.dc-fig-sub{position:relative;z-index:1}
-.dc-fig-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:1px;color:var(--accent);font-weight:600;}
-.dc-fig-sub{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(1,1,3,.62);margin-top:-6px;}
 .dc-sep-line{width:1px;align-self:stretch;min-height:150px;background:linear-gradient(180deg,transparent,rgba(122,96,24,.5) 18%,rgba(122,96,24,.5) 82%,transparent);}
 
 /* ── GALERÍA ── */
@@ -587,17 +580,18 @@ body{
 .hosp-cameo .hosp-photo{margin-bottom:0}
 .hosp-cameo::after{
   content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:320px;height:368px;background:url('orn-marco.png') center/contain no-repeat;
+  width:310px;height:356px;background:url('orn-marco.png') center/contain no-repeat;
   pointer-events:none;z-index:2;
 }
+.hosp-cameo{margin-bottom:88px;margin-top:56px}
 @media (max-width:400px){
-  .hosp-cameo::after{width:288px;height:331px}
-  .hosp-photo{width:176px;height:176px}
+  .hosp-cameo::after{width:272px;height:313px}
+  .hosp-photo{width:168px;height:168px}
 }
 
 /* ── AJUSTES TIPOGRÁFICOS VICTORIANOS ── */
 .eyebrow{font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;font-style:italic;}
-.cd-lbl,.loc-city,.dc-fig-sub,.rsvp-pases-label,.rsvp-deadline,.itin-name,.gift-bank-label{
+.cd-lbl,.loc-city,.rsvp-pases-label,.rsvp-deadline,.itin-name,.gift-bank-label{
   font-family:'Cinzel',serif !important;font-weight:600 !important;
 }
 .cd-num{font-family:'Playfair Display',serif;font-weight:700;}
@@ -1041,12 +1035,6 @@ body{
       </div>
     </div>
 
-    <div class="family-section-sep rv"></div>
-    <p class="eyebrow padrinos-eyebrow rv">Nuestros Padrinos</p>
-    <div class="padrinos-ticker rv" id="padrinosTicker">
-      <div class="padrinos-tick-name">Por confirmar</div>
-    </div>
-    <p class="padrinos-tick-count rv" id="padrinosCount">1 / 1</p>
   </section>
 
   <!-- ── ORNAMENTO B ── -->
@@ -1301,14 +1289,10 @@ body{
     <div class="dc-figures rv">
       <div class="dc-fig">
         <img src="caballero.png" alt="Caballero, traje formal" loading="lazy">
-        <span class="dc-fig-label">Caballeros</span>
-        <span class="dc-fig-sub">traje formal</span>
       </div>
       <div class="dc-sep-line" aria-hidden="true"></div>
       <div class="dc-fig">
         <img src="dama.png" alt="Dama, vestido formal" loading="lazy">
-        <span class="dc-fig-label">Damas</span>
-        <span class="dc-fig-sub">vestido largo</span>
       </div>
     </div>
 
@@ -1645,32 +1629,6 @@ function initEnvelope(){
     document.getElementById('cdSecs').textContent=pad(Math.floor(diff%60000/1000));
   }
   tick(); setInterval(tick,1000);
-})();
-
-/* ── PADRINOS TICKER ── */
-(function(){
-  const ticker = document.getElementById('padrinosTicker');
-  const countEl = document.getElementById('padrinosCount');
-  if(!ticker) return;
-  const names = ticker.querySelectorAll('.padrinos-tick-name');
-  const total = names.length;
-  if(!total) return;
-  let current = 0;
-  const SHOW_MS = 2400;
-  const FADE = 0.45;
-  gsap.set(names[0], {opacity:1});
-  function next(){
-    const outEl = names[current];
-    const inIdx = (current + 1) % total;
-    const inEl  = names[inIdx];
-    gsap.to(outEl, {opacity:0, duration:FADE, onComplete:function(){
-      current = inIdx;
-      if(countEl) countEl.textContent = (current+1) + ' / ' + total;
-      gsap.fromTo(inEl, {opacity:0}, {opacity:1, duration:FADE});
-      setTimeout(next, SHOW_MS);
-    }});
-  }
-  setTimeout(next, SHOW_MS);
 })();
 
 /* ── VINYL PLAYER JS ── */
