@@ -633,16 +633,20 @@ body{
 .rsvp-fields{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:0 auto 22px;}
 .rsvp-input{width:100%;box-sizing:border-box;padding:14px 16px;border:1.5px solid rgba(122,96,24,.32);border-radius:10px;background:var(--bg);font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:var(--text);transition:border-color .25s,box-shadow .25s;}
 .rsvp-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(77,11,11,.12);background:#fff}
-/* ── RSVP · X pases con contador de pases a ocupar ── */
-.rsvp-contador-nota{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px;line-height:1.6;color:var(--text);text-align:center;max-width:400px;margin:0 auto 14px;}
-.rsvp-contador{display:flex;align-items:center;justify-content:center;gap:18px;max-width:400px;margin:0 auto 10px;padding:14px 20px;background:var(--bg);border:1px solid rgba(122,96,24,.30);border-radius:12px;}
-.rsvp-contador-btn{width:46px;height:46px;flex-shrink:0;border-radius:50%;border:1.5px solid rgba(122,96,24,.45);background:#fff;
-  font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;line-height:1;color:var(--accent);cursor:pointer;transition:all .2s;
-  display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
-.rsvp-contador-btn:hover:not(:disabled){background:var(--accent);border-color:var(--accent);color:#fff;}
-.rsvp-contador-btn:disabled{opacity:.35;cursor:not-allowed;}
-.rsvp-contador-valor{font-family:'Cinzel',serif;font-weight:700;font-size:40px;color:var(--dark);line-height:1;min-width:64px;text-align:center;}
-.rsvp-contador-pie{font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7a6018;text-align:center;margin:0 auto 22px;}
+/* ── RSVP · nombres asignados ── */
+.rsvp-pases-nota{display:flex;align-items:flex-start;gap:9px;max-width:400px;margin:-12px auto 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:15px;line-height:1.6;color:var(--text);text-align:left;}
+.rsvp-pases-nota svg{width:15px;height:15px;flex-shrink:0;margin-top:3px;color:#7a6018;}
+.rsvp-pases-nota strong{font-style:normal;font-weight:700;color:var(--dark);}
+.rsvp-asignados{display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto 22px;}
+.rsvp-person-card{display:flex;flex-direction:column;gap:10px;padding:14px 16px;background:var(--bg);border:1.5px solid rgba(122,96,24,.30);border-radius:12px;transition:border-color .25s,background .25s;}
+.rsvp-person-card[data-choice="yes"]{border-color:var(--accent);background:rgba(77,11,11,.06);}
+.rsvp-person-card[data-choice="no"]{border-color:#7a6018;background:rgba(122,96,24,.10);}
+.rsvp-person-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--dark);line-height:1.3;text-align:center;}
+.rsvp-mini-btns{display:flex;gap:8px;}
+.rsvp-mini-btn{flex:1;padding:10px 8px;border:1.5px solid rgba(122,96,24,.32);background:#fff;cursor:pointer;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;color:var(--text);border-radius:8px;transition:all .25s;min-height:44px;}
+.rsvp-mini-btn:disabled{opacity:.45;cursor:not-allowed;}
+.rsvp-mini-btn.rsvp-mini-yes-on{background:var(--accent);border-color:var(--accent);color:#fff;}
+.rsvp-mini-btn.rsvp-mini-no-on{background:#7a6018;border-color:#7a6018;color:#fff;}
 .rsvp-gracias{max-width:400px;margin:0 auto;padding:26px 22px;background:var(--bg);border:1.5px solid rgba(122,96,24,.32);border-radius:14px;text-align:center;}
 .rsvp-gracias-icon{color:var(--accent);margin:0 auto 10px;display:block;}
 .rsvp-gracias-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:8px;line-height:1.35;}
@@ -1415,29 +1419,18 @@ body{
         </div>
 
         <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none">
-          <div class="rsvp-pases-label">Pases<br>asignados</div>
+          <div class="rsvp-pases-label">Pases<br>reservados</div>
           <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
         </div>
 
+        <p class="rsvp-pases-nota" id="rsvp-pases-nota" style="display:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01"/><path d="M11 12h1v4h1"/></svg>
+          <span>Los pases son <strong>personales e intransferibles</strong>. El acceso es únicamente para las personas registradas en esta invitación.</span>
+        </p>
+
         <!-- BANDEJA: se colapsa al confirmar -->
         <div id="rsvp-bandeja">
-          <div class="rsvp-toggle">
-            <button class="rsvp-toggle-btn" id="btnYes" type="button">¡Ahí estaré!</button>
-            <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
-          </div>
-
-          <!-- Contador: cuántos de sus pases va a ocupar realmente -->
-          <div id="rsvp-contador-wrap" style="display:none">
-            <p class="rsvp-contador-nota" id="rsvpContadorNota"></p>
-            <div class="rsvp-contador">
-              <button class="rsvp-contador-btn" id="rsvpMenos" type="button" aria-label="Quitar un pase">−</button>
-              <span class="rsvp-contador-valor" id="rsvpContadorValor" aria-live="polite">1</span>
-              <button class="rsvp-contador-btn" id="rsvpMas" type="button" aria-label="Agregar un pase">+</button>
-            </div>
-            <p class="rsvp-contador-pie" id="rsvpContadorPie"></p>
-          </div>
-
-          <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
+          <div class="rsvp-asignados" id="rsvp-asignados" style="display:none"></div>
 
           <button class="rsvp-btn" id="rsvp-confirm-btn" type="button">
             <span id="rsvp-btn-text">Confirmar asistencia</span>
@@ -1689,7 +1682,10 @@ function initEnvelope(){
   }
 })();
 
-// ------ RSVP PANEL INTEGRATION — "X pases" con contador de pases a ocupar ------
+/* ── RSVP · panel-invitados — version "nombres asignados" ── */
+/* El panel asigna los nombres de cada invitacion y cada persona responde por
+   separado. No hay campos libres ni contador de pases: mezclar las dos
+   versiones fue un error caro en el pasado. */
 (function(){
   var PANEL_API = 'https://panel-invitados.vercel.app/api/confirmar';
   var RSVP_URL  = 'https://boda-deny-y-arturo.vercel.app';
@@ -1700,7 +1696,7 @@ function initEnvelope(){
      espacio o & al pegarla. Un nombre como "Sr. & Sra. Lopez" llegaba truncado
      y el panel lo registraba como otra invitacion. El panel genera un token
      base64url en ?i=... (sin espacios, & ni %) que atraviesa intacto. Se
-     conserva ?para=&pases= para los links ya enviados. */
+     conserva ?para= para los links ya enviados. */
   function decodeInvite(tok){
     try{
       var b64 = tok.replace(/-/g,'+').replace(/_/g,'/');
@@ -1708,135 +1704,86 @@ function initEnvelope(){
       var bin = atob(b64), bytes = new Uint8Array(bin.length);
       for(var i=0;i<bin.length;i++){ bytes[i] = bin.charCodeAt(i); }
       var p = new TextDecoder().decode(bytes).split('|');
-      return { para:(p[0]||'').trim(), pases: parseInt(p[1],10) || 1 };
+      return { para:(p[0]||'').trim() };
     }catch(e){ return null; }
   }
   var qp = new URLSearchParams(window.location.search);
   var hp = new URLSearchParams(window.location.hash.replace(/^#/,''));
-  var urlPara = '', rawP = 1;
+  var urlPara = '';
   var token = qp.get('i') || hp.get('i');
   if(token){
     var dec = decodeInvite(token);
-    if(dec && dec.para){ urlPara = dec.para; rawP = dec.pases; }
+    if(dec && dec.para) urlPara = dec.para;
   }
-  if(!urlPara){
-    urlPara = (qp.get('para') || hp.get('para') || '').trim();
-    rawP    = parseInt(qp.get('pases') || hp.get('pases'), 10);
-  }
-  /* Tope: lo que los novios asignaron en el panel. */
-  var pasesAsignados = (isNaN(rawP) || rawP < 1 || rawP > 20) ? 1 : rawP;
-  /* Lo que el invitado dice que va a ocupar de verdad. Arranca en 1 y el
-     invitado va sumando: asi captura solo los que de verdad van, en vez de
-     encontrarse los campos de todos sus pases ya abiertos. Nunca pasa del tope. */
-  var pasesAUsar = 1;
+  if(!urlPara) urlPara = (qp.get('para') || hp.get('para') || '').trim();
 
-  var rsvpChoice = null;
-  var savedNames = [];
+  var nombresAsignados = [];
+  var personChoices = {};
 
-  var nameEl      = document.getElementById('rsvp-name-display');
-  var pasesNumEl  = document.getElementById('rsvp-pases-num');
-  var contWrap    = document.getElementById('rsvp-contador-wrap');
-  var contNota    = document.getElementById('rsvpContadorNota');
-  var contValor   = document.getElementById('rsvpContadorValor');
-  var contPie     = document.getElementById('rsvpContadorPie');
-  var btnMenos    = document.getElementById('rsvpMenos');
-  var btnMas      = document.getElementById('rsvpMas');
-  var fieldsEl    = document.getElementById('rsvp-fields');
-  var bandejaEl   = document.getElementById('rsvp-bandeja');
-  var graciasEl   = document.getElementById('rsvp-gracias');
-  var gTitleEl    = document.getElementById('rsvp-gracias-title');
-  var gSubEl      = document.getElementById('rsvp-gracias-sub');
-  var editarBtn   = document.getElementById('rsvp-editar-btn');
-  var btnYes      = document.getElementById('btnYes');
-  var btnNo       = document.getElementById('btnNo');
-  var confirmBtn  = document.getElementById('rsvp-confirm-btn');
-  var btnText     = document.getElementById('rsvp-btn-text');
-  var feedbackEl  = document.getElementById('rsvp-feedback');
-  if(!confirmBtn || !btnYes) return;
+  var nameEl     = document.getElementById('rsvp-name-display');
+  var pasesDisp  = document.getElementById('rsvp-pases-display');
+  var pasesNumEl = document.getElementById('rsvp-pases-num');
+  var notaEl     = document.getElementById('rsvp-pases-nota');
+  var asigEl     = document.getElementById('rsvp-asignados');
+  var bandejaEl  = document.getElementById('rsvp-bandeja');
+  var graciasEl  = document.getElementById('rsvp-gracias');
+  var gTitleEl   = document.getElementById('rsvp-gracias-title');
+  var gSubEl     = document.getElementById('rsvp-gracias-sub');
+  var editarBtn  = document.getElementById('rsvp-editar-btn');
+  var confirmBtn = document.getElementById('rsvp-confirm-btn');
+  var btnText    = document.getElementById('rsvp-btn-text');
+  var feedbackEl = document.getElementById('rsvp-feedback');
+  if(!confirmBtn || !asigEl) return;
 
-  function say(msg, color){
+  function msg(txt, color){
     if(!feedbackEl) return;
-    if(!msg){ feedbackEl.style.display = 'none'; feedbackEl.textContent = ''; return; }
+    if(!txt){ feedbackEl.textContent = ''; feedbackEl.style.display = 'none'; return; }
+    feedbackEl.textContent = txt;
     feedbackEl.style.display = '';
-    feedbackEl.style.color = color || 'var(--gold-deep)';
-    feedbackEl.textContent = msg;
+    feedbackEl.style.color = color || '#7a6018';
   }
 
-  function paintHeader(){
-    if(pasesNumEl) pasesNumEl.textContent = pasesAsignados;
-    /* La tarjeta de pases solo tiene sentido con link personalizado. */
-    var pasesDisp = document.getElementById('rsvp-pases-display');
-    if(pasesDisp) pasesDisp.style.display = urlPara ? 'flex' : 'none';
-    if(nameEl && urlPara){ nameEl.textContent = urlPara; nameEl.style.display = 'block'; }
-  }
-  paintHeader();
+  if(urlPara && nameEl){ nameEl.textContent = urlPara; nameEl.style.display = ''; }
+  confirmBtn.disabled = true;
 
-  /* Un campo por pase que vaya a ocupar. Lo escrito se conserva al subir y
-     bajar el contador: savedNames guarda por posicion. */
-  function renderFields(){
-    fieldsEl.innerHTML = '';
-    for(var i = 0; i < pasesAUsar; i++){
-      var inp = document.createElement('input');
-      inp.type = 'text';
-      inp.className = 'rsvp-input';
-      inp.placeholder = pasesAUsar === 1 ? 'Tu nombre completo' : 'Nombre completo del invitado ' + (i+1);
-      inp.autocomplete = 'off';
-      inp.maxLength = 60;
-      inp.disabled = frozen;
-      inp.value = savedNames[i] || '';
-      (function(idx){ inp.addEventListener('input', function(){ savedNames[idx] = this.value; }); })(i);
-      fieldsEl.appendChild(inp);
-    }
-  }
+  /* Una tarjeta por invitado asignado, con su propio Asistiré / No asistiré. */
+  function renderAsignados(){
+    asigEl.innerHTML = '';
+    nombresAsignados.forEach(function(nm, idx){
+      var card = document.createElement('div');
+      card.className = 'rsvp-person-card';
+      var choice = personChoices[idx];
+      if(choice) card.setAttribute('data-choice', choice);
 
-  function pintaContador(){
-    if(contValor) contValor.textContent = pasesAUsar;
-    if(btnMenos)  btnMenos.disabled = frozen || pasesAUsar <= 1;
-    if(btnMas)    btnMas.disabled   = frozen || pasesAUsar >= pasesAsignados;
-    if(contNota){
-      contNota.textContent = pasesAsignados === 1
-        ? 'Tienes 1 pase reservado para ti.'
-        : 'Tienes ' + pasesAsignados + ' pases reservados. Aumenta o disminuye el número de pases que vayas a ocupar.';
-    }
-    if(contPie){
-      contPie.textContent = pasesAUsar >= pasesAsignados
-        ? 'Estás usando todos tus pases'
-        : pasesAUsar + ' de ' + pasesAsignados + ' pases';
-    }
+      var name = document.createElement('div');
+      name.className = 'rsvp-person-name';
+      name.textContent = nm;
+
+      var btns = document.createElement('div');
+      btns.className = 'rsvp-mini-btns';
+
+      var bY = document.createElement('button');
+      bY.type = 'button';
+      bY.className = 'rsvp-mini-btn' + (choice === 'yes' ? ' rsvp-mini-yes-on' : '');
+      bY.textContent = 'Asistiré';
+      bY.disabled = frozen;
+      bY.addEventListener('click', function(){ if(frozen) return; personChoices[idx] = 'yes'; msg(''); renderAsignados(); });
+
+      var bN = document.createElement('button');
+      bN.type = 'button';
+      bN.className = 'rsvp-mini-btn' + (choice === 'no' ? ' rsvp-mini-no-on' : '');
+      bN.textContent = 'No asistiré';
+      bN.disabled = frozen;
+      bN.addEventListener('click', function(){ if(frozen) return; personChoices[idx] = 'no'; msg(''); renderAsignados(); });
+
+      btns.appendChild(bY); btns.appendChild(bN);
+      card.appendChild(name); card.appendChild(btns);
+      asigEl.appendChild(card);
+    });
+    asigEl.style.display = 'flex';
   }
 
-  function setPases(n){
-    var nuevo = Math.min(pasesAsignados, Math.max(1, n));
-    if(nuevo === pasesAUsar) return;
-    pasesAUsar = nuevo;
-    pintaContador();
-    renderFields();
-    say('');
-  }
-  if(btnMenos) btnMenos.addEventListener('click', function(){ if(!frozen) setPases(pasesAUsar - 1); });
-  if(btnMas)   btnMas.addEventListener('click',   function(){ if(!frozen) setPases(pasesAUsar + 1); });
-
-  /* El contador y los campos solo existen si eligio asistir. */
-  function selectRsvp(choice){
-    rsvpChoice = choice;
-    if(btnYes){ btnYes.classList.toggle('rsvp-toggle-selected-yes', choice === 'yes'); btnYes.classList.remove('rsvp-toggle-selected-no'); }
-    if(btnNo){  btnNo.classList.toggle('rsvp-toggle-selected-no',  choice === 'no');  btnNo.classList.remove('rsvp-toggle-selected-yes'); }
-    if(choice === 'yes'){
-      if(contWrap) contWrap.style.display = '';
-      pintaContador();
-      renderFields();
-      fieldsEl.style.display = '';
-    } else {
-      if(contWrap) contWrap.style.display = 'none';
-      fieldsEl.style.display = 'none';
-      fieldsEl.innerHTML = '';
-    }
-  }
-
-  btnYes.addEventListener('click', function(){ if(!frozen){ selectRsvp('yes'); say(''); } });
-  btnNo.addEventListener('click',  function(){ if(!frozen){ selectRsvp('no');  say(''); } });
-
-  /* Bandeja <-> agradecimiento. Nunca desaparece la ruta de regreso. */
+  /* Cierra la bandeja y muestra el agradecimiento con el resumen. */
   function mostrarGracias(estado, nombres){
     var lista = (nombres || []).filter(function(n){ return n && String(n).trim(); });
     if(estado === 'confirmado'){
@@ -1851,101 +1798,90 @@ function initEnvelope(){
     bandejaEl.style.display = 'none';
     graciasEl.style.display = '';
     editarBtn.disabled = frozen;
-    say('');
+    msg('');
   }
+  /* Reabre la bandeja conservando lo ya elegido. */
   function abrirBandeja(){
     graciasEl.style.display = 'none';
     bandejaEl.style.display = '';
-    say('');
+    msg('');
   }
-  if(editarBtn) editarBtn.addEventListener('click', function(){ if(!frozen) abrirBandeja(); });
+  editarBtn.addEventListener('click', function(){ if(!frozen) abrirBandeja(); });
 
   function applyFreeze(){
     if(!frozen) return;
-    btnYes.disabled = true;
-    btnNo.disabled  = true;
     confirmBtn.disabled = true;
-    if(btnMenos) btnMenos.disabled = true;
-    if(btnMas)   btnMas.disabled   = true;
-    if(editarBtn) editarBtn.disabled = true;
-    var ins = fieldsEl.querySelectorAll('.rsvp-input');
-    for(var i=0;i<ins.length;i++){ ins[i].disabled = true; }
-    if(btnText) btnText.textContent = 'Fecha límite alcanzada';
-    say('La fecha para confirmar asistencia ha pasado.');
+    editarBtn.disabled = true;
+    if(btnText) btnText.textContent = 'Fecha límite vencida';
+    msg('La fecha para confirmar asistencia ha pasado.');
   }
 
   if(urlPara){
-    btnYes.disabled = true;
-    btnNo.disabled  = true;
     fetch(PANEL_API + '?nombre=' + encodeURIComponent(urlPara) + '&url_boda=' + encodeURIComponent(RSVP_URL))
       .then(function(r){ return r.json(); })
       .then(function(resp){
         var d = resp && resp.invitado;
-        if(d && typeof d.pases === 'number' && d.pases > 0 && d.pases <= 20){
-          pasesAsignados = d.pases;
-          if(pasesAUsar > pasesAsignados) pasesAUsar = pasesAsignados;
+        var asignados = (d && Array.isArray(d.nombres_asignados))
+          ? d.nombres_asignados.filter(function(x){ return x && String(x).trim(); })
+          : [];
+
+        if(asignados.length === 0){
+          msg('No encontramos lugares asignados a esta invitación. Escríbenos para ayudarte.');
+          applyFreeze();
+          return;
         }
-        paintHeader();
-        if(!frozen){ btnYes.disabled = false; btnNo.disabled = false; }
-        if(d && (d.estado === 'confirmado' || d.estado === 'declino')){
-          if(d.nombres_confirmados && d.nombres_confirmados.length){
-            savedNames = d.nombres_confirmados.slice();
-            /* El contador arranca en cuantos pases habia ocupado antes. */
-            pasesAUsar = Math.min(pasesAsignados, Math.max(1, savedNames.length));
-          }
-          selectRsvp(d.estado === 'confirmado' ? 'yes' : 'no');
+
+        nombresAsignados = asignados;
+        pasesNumEl.textContent = asignados.length;
+        pasesDisp.style.display = 'flex';
+        if(notaEl) notaEl.style.display = 'flex';
+        if(!frozen) confirmBtn.disabled = false;
+
+        if(d.estado === 'confirmado' || d.estado === 'declino'){
+          /* Coincidencia sin acentos ni mayusculas: quien respondio antes de
+             tener nombres asignados pudo escribirlo ligeramente distinto. */
+          var clave = function(x){ return String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim(); };
+          var conf = (d.nombres_confirmados || []).map(clave);
+          nombresAsignados.forEach(function(nm, idx){
+            personChoices[idx] = (d.estado === 'declino') ? 'no' : (conf.indexOf(clave(nm)) >= 0 ? 'yes' : 'no');
+          });
           if(btnText) btnText.textContent = 'Actualizar respuesta';
-          /* Con respuesta guardada la seccion arranca CERRADA. */
+          renderAsignados();
+          /* Ya hay respuesta guardada: la seccion arranca cerrada. */
           mostrarGracias(d.estado, d.nombres_confirmados || []);
+        } else {
+          renderAsignados();
         }
         applyFreeze();
       })
-      .catch(function(){
-        paintHeader();
-        if(!frozen){ btnYes.disabled = false; btnNo.disabled = false; }
+      .catch(function(err){
+        console.error('RSVP precarga:', err);
+        msg('No pudimos cargar tu invitación. Recarga la página e inténtalo de nuevo.');
         applyFreeze();
       });
   } else {
-    /* Sin link personalizado no hay invitacion que actualizar: se avisa antes
-       de que llene un formulario que nunca podria enviarse. */
-    confirmBtn.disabled = true;
-    confirmBtn.style.opacity = '.55';
-    say('Para confirmar necesitas abrir el enlace personalizado que te enviamos por WhatsApp. Ese enlace lleva tu nombre y tus pases; si lo abres desde un reenvío o escribiendo la dirección a mano, no podemos identificar tu invitación.');
+    /* Sin link personalizado no hay invitacion que actualizar. */
+    msg('Para confirmar necesitas abrir el enlace personalizado que te enviamos por WhatsApp. Ese enlace lleva los nombres de tu invitación; si lo abres desde un reenvío o escribiendo la dirección a mano, no podemos identificarla.');
     applyFreeze();
   }
 
   confirmBtn.addEventListener('click', function(){
     if(frozen || confirmBtn.disabled) return;
-    if(!urlPara){
-      say('Para confirmar necesitas abrir el enlace personalizado que te enviamos por WhatsApp.', '#B85042');
+    if(!nombresAsignados.length){
+      msg('No encontramos lugares asignados a esta invitación.');
       return;
     }
-    if(!rsvpChoice){
-      say('Por favor indícanos si podrás asistir.', '#B85042');
+    var faltan = nombresAsignados.filter(function(_, i){ return !personChoices[i]; }).length;
+    if(faltan > 0){
+      msg('Por favor responde por cada invitado (' + faltan + ' pendiente' + (faltan === 1 ? '' : 's') + ').');
       return;
     }
-    var nombres = [];
-    if(rsvpChoice === 'yes'){
-      var inputs = fieldsEl.querySelectorAll('.rsvp-input');
-      for(var i=0;i<inputs.length;i++){
-        var v = inputs[i].value.trim();
-        if(v) nombres.push(v);
-      }
-      if(nombres.length === 0){
-        say('Por favor escribe al menos un nombre.', '#B85042');
-        if(inputs[0]) inputs[0].focus();
-        return;
-      }
-      if(nombres.length < pasesAUsar){
-        say('Faltan ' + (pasesAUsar - nombres.length) + ' nombre' + (pasesAUsar - nombres.length === 1 ? '' : 's') + '. Si van a ser menos, baja el contador de pases.', '#B85042');
-        return;
-      }
-    }
-    var estadoFinal = rsvpChoice === 'yes' ? 'confirmado' : 'declino';
+    var si = nombresAsignados.filter(function(_, i){ return personChoices[i] === 'yes'; });
+    var estado = si.length > 0 ? 'confirmado' : 'declino';
 
     confirmBtn.disabled = true;
     if(btnText) btnText.textContent = 'Enviando…';
-    say('');
+    msg('');
 
     fetch(PANEL_API, {
       method: 'POST',
@@ -1953,9 +1889,9 @@ function initEnvelope(){
       body: JSON.stringify({
         nombre:              urlPara,
         url_boda:            RSVP_URL,
-        estado:              estadoFinal,
-        pases_confirmados:   estadoFinal === 'confirmado' ? nombres.length : 0,
-        nombres_confirmados: estadoFinal === 'confirmado' ? nombres : []
+        estado:              estado,
+        pases_confirmados:   estado === 'confirmado' ? si.length : 0,
+        nombres_confirmados: estado === 'confirmado' ? si : []
       })
     })
     .then(function(r){
@@ -1965,27 +1901,28 @@ function initEnvelope(){
     })
     .then(function(res){
       confirmBtn.disabled = false;
-      /* Solo se da por guardado si el panel lo confirma; decir "confirmado"
-         sobre un rechazo deja al invitado tranquilo y al cliente sin el dato. */
+      /* Solo se da por guardado si el panel lo confirma. */
       if(res.ok && res.d && res.d.ok){
         if(btnText) btnText.textContent = 'Actualizar respuesta';
-        mostrarGracias(estadoFinal, nombres);
+        mostrarGracias(estado, si);
         return;
       }
-      if(btnText) btnText.textContent = 'Confirmar';
+      if(btnText) btnText.textContent = 'Confirmar asistencia';
       var err = res.d && res.d.error;
-      say(
+      msg(
         err === 'no_match'
           ? 'No pudimos identificar tu invitación. Abre el enlace personalizado que te enviamos por WhatsApp; ese es el único que registra tu confirmación.'
           : err === 'invitacion_borrada'
             ? 'Esta invitación ya no está activa. Por favor contacta a los novios para que te envíen un enlace nuevo.'
-            : 'Hubo un problema al enviar. Inténtalo de nuevo.',
+            : err === 'respuestas_cerradas'
+              ? 'Las confirmaciones de esta invitación están cerradas. Si necesitas cambiar tu respuesta, contacta a los novios.'
+              : 'Hubo un problema al enviar. Inténtalo de nuevo.',
         '#B85042');
     })
     .catch(function(){
       confirmBtn.disabled = false;
-      if(btnText) btnText.textContent = 'Confirmar';
-      say('Sin conexión. Verifica tu internet e inténtalo de nuevo.', '#B85042');
+      if(btnText) btnText.textContent = 'Confirmar asistencia';
+      msg('Sin conexión. Verifica tu internet e inténtalo de nuevo.', '#B85042');
     });
   });
 })();
